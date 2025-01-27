@@ -11,6 +11,13 @@
       ./hardware-configuration.nix
     ];
 
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+    "steam"
+    "steam-original"
+    "steam-unwrapped"
+    "steam-run"
+  ];
+
   hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [
@@ -95,9 +102,17 @@
   programs.dconf.enable = true;
   programs.hyprland.enable = true;
   programs.hyprlock.enable = true;
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+    localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+  };
+
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
+  environment.sessionVariables = { NIXOS_OZONE_WL = "1"; };
   environment.systemPackages = with pkgs; [
     kdePackages.akonadi
     kdePackages.kdepim-addons
