@@ -16,6 +16,9 @@
     "steam-original"
     "steam-unwrapped"
     "steam-run"
+    "rider"
+    "clion"
+    "spotify"
   ];
 
   hardware.bluetooth.enable = true;
@@ -93,6 +96,10 @@
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
+      vscodium
+      spotify
+      jetbrains.rider
+      jetbrains.clion
       vesktop
       tree
       kitty
