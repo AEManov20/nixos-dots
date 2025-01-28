@@ -102,14 +102,20 @@
   # $ nix search wget
   environment.sessionVariables = { NIXOS_OZONE_WL = "1"; };
   environment.systemPackages = with pkgs; [
-    kdePackages.akonadi
-    kdePackages.kdepim-addons
-    kdePackages.kio-gdrive
-    kdePackages.kaccounts-integration
-    kdePackages.kaccounts-providers
+    cifs-utils
     vim
     wget
   ];
+
+  fileSystems."/mnt/pi-storage" = {
+    device = "//192.168.1.14/pi_storage";
+    fsType = "cifs";
+    options = let
+      # this line prevents hanging on network split
+      automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
+
+    in ["${automount_opts},credentials=/etc/nixos/smb-secrets,uid=1000,gid=100"];
+  };
 
   programs.mtr.enable = true;
   programs.gnupg.agent = {
@@ -117,13 +123,21 @@
     enableSSHSupport = true;
   };
 
-  fonts.packages = with pkgs; [
-    noto-fonts
-    noto-fonts-cjk-sans
-    noto-fonts-emoji
-    liberation_ttf
-    iosevka
-  ];
+  fonts = {
+    packages = with pkgs; [
+      noto-fonts
+      noto-fonts-cjk-sans
+      noto-fonts-emoji
+      liberation_ttf
+      iosevka
+    ];
+
+    fontconfig = {
+      defaultFonts = {
+        monospace = [ "Iosevka" ];
+      };
+    };
+  };
 
   # List services that you want to enable:
 
