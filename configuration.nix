@@ -117,6 +117,14 @@
     enableSSHSupport = true;
   };
 
+  fonts.packages = with pkgs; [
+    noto-fonts
+    noto-fonts-cjk-sans
+    noto-fonts-emoji
+    liberation_ttf
+    iosevka
+  ];
+
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
