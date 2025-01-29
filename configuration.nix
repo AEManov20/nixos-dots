@@ -74,14 +74,14 @@
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
-      git
+      keepassxc
+      bottles
       libreoffice
       vscodium
       spotify
       jetbrains.rider
       jetbrains.clion
       vesktop
-      tree
       kitty
     ];
   };
@@ -90,11 +90,16 @@
   programs.kdeconnect.enable = true;
   programs.hyprland.enable = true;
   programs.hyprlock.enable = true;
+  programs.gamescope = {
+    enable = true;
+    capSysNice = true;
+  };
   programs.steam = {
     enable = true;
     # remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
     # dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
     localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+    gamescopeSession.enable = true;
   };
 
 
@@ -103,16 +108,33 @@
   environment.sessionVariables = { NIXOS_OZONE_WL = "1"; };
   environment.systemPackages = with pkgs; [
     cifs-utils
+    rclone
+    git
     vim
     wget
   ];
 
-  fileSystems."/mnt/pi-storage" = {
+  environment.etc."rclone-gdrive.conf".source = "/etc/nixos/rclone/gdrive.conf";
+
+  fileSystems."/mnt/gdrive" = {
+    device = "gdrive:/";
+    fsType = "rclone";
+    options = [
+      "nodev"
+      "nofail"
+      "allow_other"
+      "args2env"
+      "config=/etc/rclone-gdrive.conf"
+      "uid=1000,gid=100"
+    ];
+  };
+
+  fileSystems."/mnt/pistorage" = {
     device = "//192.168.1.14/pi_storage";
     fsType = "cifs";
     options = let
       # this line prevents hanging on network split
-      automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
+      automount_opts = "x-systemd.automount,noauto,nofail,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
 
     in ["${automount_opts},credentials=/etc/nixos/smb-secrets,uid=1000,gid=100"];
   };
@@ -136,6 +158,28 @@
       defaultFonts = {
         monospace = [ "Iosevka" ];
       };
+    };
+  };
+
+  systemd.timers."backup-gdrive-keepass" = {
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      OnBootSec = "5m";
+      OnUnitActiveSec = "5m";
+      Unit = "backup-gdrive-keepass.service";
+    };
+  };
+
+  systemd.services."backup-gdrive-keepass" = {
+    requisite = [ "mnt-gdrive.mount" ];
+    script = ''
+      set -eu
+      [ -d /home/alex/KeePassBackup ] || mkdir /home/alex/KeePassBackup
+      ${pkgs.coreutils}/bin/cp /mnt/gdrive/keepass/Master.kdbx /home/alex/KeePassBackup/Master-$(${pkgs.coreutils}/bin/date +'%Yy%mm%dd%Hh%Mm%Ss').kdbx
+    '';
+    serviceConfig = {
+      Type = "oneshot";
+      User = "alex";
     };
   };
 
