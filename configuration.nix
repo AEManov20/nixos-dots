@@ -73,7 +73,6 @@
     isNormalUser = true;
     extraGroups = [ "wheel" "libvirtd" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
-      starship
       keepassxc
       bottles
       libreoffice
