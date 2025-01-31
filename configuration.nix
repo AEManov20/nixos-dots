@@ -7,7 +7,7 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      <nixos-hardware/lenovo/thinkpad/e14>
+      <nixos-hardware/lenovo/thinkpad/e14/intel>
       ./hardware-configuration.nix
     ];
 
@@ -48,6 +48,8 @@
 
   i18n.defaultLocale = "en_US.UTF-8";
 
+  services.throttled.enable = false;
+
   services.xserver.enable = true;
   
   services.displayManager.sddm.enable = true;
@@ -57,9 +59,6 @@
   services.desktopManager.plasma6.enable = true;
 
   services.hypridle.enable = true;
-  
-
-  
 
   services.xserver.xkb.layout = "us";
 
@@ -72,8 +71,9 @@
 
   users.users.alex = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "libvirtd" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
+      starship
       keepassxc
       bottles
       libreoffice
@@ -86,6 +86,23 @@
     ];
   };
 
+  programs.starship = {
+    enable = true;
+    settings = {
+      character = {
+        format = "$symbol ";
+        success_symbol = "[->](bold green)";
+        error_symbol = "[->](bold red)";
+        vimcmd_symbol = "[->](bold green)";
+        vimcmd_replace_one_symbol = "[->](bold purple)";
+        vimcmd_replace_symbol = "[->](bold purple)";
+        vimcmd_visual_symbol = "[->](bold purple)";
+      };
+    };
+  };
+
+  programs.virt-manager.enable = true;
+  programs.direnv.enable = true;
   programs.firefox.enable = true;
   programs.kdeconnect.enable = true;
   programs.hyprland.enable = true;
@@ -180,6 +197,23 @@
     serviceConfig = {
       Type = "oneshot";
       User = "alex";
+    };
+  };
+
+  virtualisation.spiceUSBRedirection.enable = true;
+  virtualisation.libvirtd = {
+    enable = true;
+    qemu = {
+      package = pkgs.qemu_kvm;
+      runAsRoot = true;
+      swtpm.enable = true;
+      ovmf = {
+        enable = true;
+        packages = [(pkgs.OVMF.override {
+          secureBoot = true;
+          tpmSupport = true;
+        }).fd];
+      };
     };
   };
 
