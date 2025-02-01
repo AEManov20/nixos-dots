@@ -11,6 +11,7 @@
       system = "x86_64-linux";
       modules = [
         nixos-hardware.nixosModules.lenovo-thinkpad-e14-intel
+        ./hardware-configuration.nix
         ./configuration.nix
       ];
     };
