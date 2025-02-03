@@ -65,8 +65,10 @@
 
   users.users.alex = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "libvirtd" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "libvirtd" "wireshark" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
+      bitwarden-desktop
+      wireshark
       keepassxc
       bottles
       libreoffice
@@ -94,6 +96,7 @@
     };
   };
 
+  programs.wireshark.enable = true;
   programs.virt-manager.enable = true;
   programs.direnv.enable = true;
   programs.firefox.enable = true;
