@@ -65,14 +65,14 @@
 
   users.users.alex = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "libvirtd" "wireshark" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "libvirtd" "wireshark" "docker" ];
     packages = with pkgs; [
       bitwarden-desktop
       wireshark
       keepassxc
       bottles
       libreoffice
-      vscodium
+      zed-editor
       spotify
       jetbrains.rider
       jetbrains.clion
@@ -120,11 +120,16 @@
   # $ nix search wget
   environment.sessionVariables = { NIXOS_OZONE_WL = "1"; };
   environment.systemPackages = with pkgs; [
+    vlc
+    mpv
     cifs-utils
     rclone
     git
     vim
-    wget
+  ];
+
+  environment.plasma6.excludePackages = with pkgs; [
+    kdePackages.elisa
   ];
 
   environment.etc."rclone-gdrive.conf".source = "/etc/nixos/rclone/gdrive.conf";
@@ -197,6 +202,7 @@
   };
 
   virtualisation.spiceUSBRedirection.enable = true;
+  virtualisation.docker.enable = true;
   virtualisation.libvirtd = {
     enable = true;
     qemu = {
