@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, pkgs-stable, ... }:
 
 {
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -14,7 +14,6 @@
     "steam-run"
     "rider"
     "clion"
-    "spotify"
   ];
 
   hardware.bluetooth.enable = true;
@@ -33,6 +32,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  boot.kernelPackages = pkgs-stable.linuxPackages;
   boot.kernelParams = [ "i915.force_probe=7d55" ];
 
   networking.hostName = "falkor";
@@ -65,15 +65,15 @@
 
   users.users.alex = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "libvirtd" "wireshark" "docker" ];
+    extraGroups = [ "wheel" "libvirtd" "wireshark" "docker" "uucp" "dialout" "tty" ];
     packages = with pkgs; [
       bitwarden-desktop
+      arduino-ide
       wireshark
       keepassxc
       bottles
       libreoffice
       zed-editor
-      spotify
       jetbrains.rider
       jetbrains.clion
       vesktop
@@ -94,6 +94,13 @@
         vimcmd_visual_symbol = "[->](bold purple)";
       };
     };
+  };
+
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+    vimAlias = true;
+    viAlias = true;
   };
 
   programs.wireshark.enable = true;
@@ -125,7 +132,6 @@
     cifs-utils
     rclone
     git
-    vim
   ];
 
   environment.plasma6.excludePackages = with pkgs; [
@@ -169,12 +175,12 @@
       noto-fonts-cjk-sans
       noto-fonts-emoji
       liberation_ttf
-      iosevka
+      fira-code
     ];
 
     fontconfig = {
       defaultFonts = {
-        monospace = [ "Iosevka" ];
+        monospace = [ "Fira Code" ];
       };
     };
   };
