@@ -13,6 +13,7 @@
     "steam-unwrapped"
     "steam-run"
     "rider"
+    "idea-ultimate"
     "clion"
   ];
 
@@ -68,13 +69,13 @@
     extraGroups = [ "wheel" "libvirtd" "wireshark" "docker" "uucp" "dialout" "tty" ];
     packages = with pkgs; [
       bitwarden-desktop
-      arduino-ide
       wireshark
       keepassxc
       bottles
       libreoffice
       zed-editor
       jetbrains.rider
+      # jetbrains.idea-ultimate
       jetbrains.clion
       vesktop
       kitty
@@ -103,6 +104,7 @@
     viAlias = true;
   };
 
+  programs.thunderbird.enable = true;
   programs.wireshark.enable = true;
   programs.virt-manager.enable = true;
   programs.direnv.enable = true;
