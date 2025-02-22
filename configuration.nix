@@ -15,6 +15,9 @@
     "rider"
     "idea-ultimate"
     "clion"
+    "chromium"
+    "chromium-unwrapped"
+    "widevine-cdm"
   ];
 
   hardware.bluetooth.enable = true;
@@ -33,7 +36,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.kernelPackages = pkgs-stable.linuxPackages;
+  boot.kernelPackages = pkgs.linuxPackages;
   boot.kernelParams = [ "i915.force_probe=7d55" ];
 
   networking.hostName = "falkor";
@@ -69,13 +72,15 @@
     extraGroups = [ "wheel" "libvirtd" "wireshark" "docker" "uucp" "dialout" "tty" ];
     packages = with pkgs; [
       bitwarden-desktop
+      (chromium.override { enableWideVine = true; })
+      dbeaver-bin
       wireshark
       keepassxc
       bottles
       libreoffice
       zed-editor
       jetbrains.rider
-      # jetbrains.idea-ultimate
+      jetbrains.idea-ultimate
       jetbrains.clion
       vesktop
       kitty
