@@ -12,9 +12,6 @@
     "steam-original"
     "steam-unwrapped"
     "steam-run"
-    "rider"
-    "idea-ultimate"
-    "clion"
     "chromium"
     "chromium-unwrapped"
     "widevine-cdm"
@@ -67,6 +64,11 @@
 
   services.libinput.enable = true;
 
+  services.mullvad-vpn = {
+    enable = true;
+    package = pkgs.mullvad-vpn;
+  };
+
   users.users.alex = {
     isNormalUser = true;
     extraGroups = [ "wheel" "libvirtd" "wireshark" "docker" "uucp" "dialout" "tty" ];
@@ -79,9 +81,6 @@
       bottles
       libreoffice
       zed-editor
-      jetbrains.rider
-      jetbrains.idea-ultimate
-      jetbrains.clion
       vesktop
       kitty
     ];
@@ -145,20 +144,20 @@
     kdePackages.elisa
   ];
 
-  environment.etc."rclone-gdrive.conf".source = "/etc/nixos/rclone/gdrive.conf";
+  # environment.etc."rclone-gdrive.conf".source = "/etc/nixos/rclone/gdrive.conf";
 
-  fileSystems."/mnt/gdrive" = {
-    device = "gdrive:/";
-    fsType = "rclone";
-    options = [
-      "nodev"
-      "nofail"
-      "allow_other"
-      "args2env"
-      "config=/etc/rclone-gdrive.conf"
-      "uid=1000,gid=100"
-    ];
-  };
+  # fileSystems."/mnt/gdrive" = {
+  #   device = "gdrive:/";
+  #   fsType = "rclone";
+  #   options = [
+  #     "nodev"
+  #     "nofail"
+  #     "allow_other"
+  #     "args2env"
+  #     "config=/etc/rclone-gdrive.conf"
+  #     "uid=1000,gid=100"
+  #   ];
+  # };
 
   fileSystems."/mnt/pistorage" = {
     device = "//192.168.1.14/pi_storage";
@@ -192,27 +191,27 @@
     };
   };
 
-  systemd.timers."backup-gdrive-keepass" = {
-    wantedBy = [ "timers.target" ];
-    timerConfig = {
-      OnBootSec = "5m";
-      OnUnitActiveSec = "5m";
-      Unit = "backup-gdrive-keepass.service";
-    };
-  };
+  # systemd.timers."backup-gdrive-keepass" = {
+  #   wantedBy = [ "timers.target" ];
+  #   timerConfig = {
+  #     OnBootSec = "5m";
+  #     OnUnitActiveSec = "5m";
+  #     Unit = "backup-gdrive-keepass.service";
+  #   };
+  # };
 
-  systemd.services."backup-gdrive-keepass" = {
-    requisite = [ "mnt-gdrive.mount" ];
-    script = ''
-      set -eu
-      [ -d /home/alex/KeePassBackup ] || mkdir /home/alex/KeePassBackup
-      ${pkgs.coreutils}/bin/cp /mnt/gdrive/keepass/Master.kdbx /home/alex/KeePassBackup/Master-$(${pkgs.coreutils}/bin/date +'%Yy%mm%dd%Hh%Mm%Ss').kdbx
-    '';
-    serviceConfig = {
-      Type = "oneshot";
-      User = "alex";
-    };
-  };
+  # systemd.services."backup-gdrive-keepass" = {
+  #   requisite = [ "mnt-gdrive.mount" ];
+  #   script = ''
+  #     set -eu
+  #     [ -d /home/alex/KeePassBackup ] || mkdir /home/alex/KeePassBackup
+  #     ${pkgs.coreutils}/bin/cp /mnt/gdrive/keepass/Master.kdbx /home/alex/KeePassBackup/Master-$(${pkgs.coreutils}/bin/date +'%Yy%mm%dd%Hh%Mm%Ss').kdbx
+  #   '';
+  #   serviceConfig = {
+  #     Type = "oneshot";
+  #     User = "alex";
+  #   };
+  # };
 
   virtualisation.spiceUSBRedirection.enable = true;
   virtualisation.docker.enable = true;
