@@ -15,6 +15,8 @@
     "chromium"
     "chromium-unwrapped"
     "widevine-cdm"
+    "rar"
+    "unrar"
   ];
 
   hardware.bluetooth.enable = true;
@@ -83,6 +85,8 @@
       zed-editor
       vesktop
       kitty
+      rar
+      unrar
     ];
   };
 
