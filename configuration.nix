@@ -71,6 +71,8 @@
     package = pkgs.mullvad-vpn;
   };
 
+  services.flatpak.enable = true;
+
   users.users.alex = {
     isNormalUser = true;
     extraGroups = [ "wheel" "libvirtd" "wireshark" "docker" "uucp" "dialout" "tty" ];
