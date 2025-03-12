@@ -5,23 +5,24 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    nixos-hardware.url = "github:nixos/nixos-hardware/master";
   };
 
   outputs = { self, nixpkgs, nixpkgs-stable, nixos-hardware, ... }: {
     nixosConfigurations.falkor = nixpkgs.lib.nixosSystem rec {
       system = "x86_64-linux";
 
-      specialArgs = {
-        pkgs-stable = import nixpkgs-stable {
-	  inherit system;
-	};
-      };
+      # specialArgs = {
+      #   pkgs-stable = import nixpkgs-stable {
+      #     inherit system;
+      #   };
+      # };
 
       modules = [
         nixos-hardware.nixosModules.lenovo-thinkpad-e14-intel
         ./hardware-configuration.nix
-        ./configuration.nix
+        ./hardware/falkor
+        ./software/falkor
       ];
     };
   };

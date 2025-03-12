@@ -1,4 +1,4 @@
 wireguard/
 rclone/
 smb-secrets
-
+hardware-configuration.nix
