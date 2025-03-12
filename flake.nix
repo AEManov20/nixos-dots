@@ -21,7 +21,7 @@
       modules = [
         nixos-hardware.nixosModules.lenovo-thinkpad-e14-intel
         ./hardware/falkor
-        ./software/falkor
+        ./software/machine-specific/falkor
       ];
     };
   };
