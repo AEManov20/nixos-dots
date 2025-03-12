@@ -137,11 +137,12 @@
   # $ nix search wget
   environment.sessionVariables = { NIXOS_OZONE_WL = "1"; };
   environment.systemPackages = with pkgs; [
+    wl-clipboard
     vlc
     mpv
     cifs-utils
     rclone
-    git
+    gitFull
   ];
 
   environment.plasma6.excludePackages = with pkgs; [
@@ -217,6 +218,7 @@
   #   };
   # };
 
+  virtualisation.waydroid.enable = true;
   virtualisation.spiceUSBRedirection.enable = true;
   virtualisation.docker.enable = true;
   virtualisation.libvirtd = {
