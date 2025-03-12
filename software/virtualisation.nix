@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   virtualisation.waydroid.enable = true;
   virtualisation.spiceUSBRedirection.enable = true;

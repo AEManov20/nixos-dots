@@ -1,13 +1,14 @@
 { pkgs, ... }:
 {
-  services.displayManager = {
-    plasma6.enable = true;
+  services.desktopManager.plasma6.enable = true;
 
+  services.displayManager = {
     sddm = {
       enable = true;
       wayland.enable = true;
-      defaultSession = "plasma";
     };
+
+    defaultSession = "plasma";
   };
 
   services.pipewire = {
