@@ -24,5 +24,17 @@
         ./software/machine-specific/falkor
       ];
     };
+
+    nixosConfigurations.wyvern = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+
+      modules = [
+        nixos-hardware.nixosModules.common.cpu.amd
+        nixos-hardware.nixosModules.common.gpu.nvidia.turing
+        nixos-hardware.nixosModules.common.ssd
+        ./hardware/wyvern
+        ./software/machine-specific/wyvern
+      ];
+    }
   };
 }
