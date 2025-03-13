@@ -23,6 +23,8 @@
     "widevine-cdm"
     "rar"
     "unrar"
+    "nvidia-x11"
+    "nvidia-settings"
   ];
 
   time.timeZone = "Europe/Sofia";
