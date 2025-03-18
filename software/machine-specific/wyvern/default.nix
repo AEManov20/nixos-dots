@@ -1,8 +1,6 @@
-{ ... }:
+{ pkgs, ... }:
 {
   imports = [ ../../. ];
-
-  networking.firewall.allowedTCPPorts = [ 22 ];
 
   services.openssh = {
     enable = true;
@@ -14,6 +12,24 @@
       PermitRootLogin = "no";
     };
   };
+
+  networking.firewall = {
+    allowedTCPPorts = [ 22 ];
+    allowedUDPPorts = [ 2456 ];
+  };
+
+  services.sunshine = {
+    enable = true;
+    autoStart = true;
+    capSysAdmin = true;
+    openFirewall = true;
+    package = pkgs.sunshine.override { cudaSupport = true; };
+  };
+
+  # services.jellyfin = {
+  #   enable = true;
+  #   openFirewall = true;
+  # };
 
   networking.hostName = "wyvern";
 
