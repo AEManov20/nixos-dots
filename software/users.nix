@@ -16,6 +16,7 @@
       kitty
       rar
       unrar
+      r2modman
     ];
   };
 }

@@ -47,6 +47,7 @@
     "libnvjitlink"
     "libcusparse"
     "libnpp"
+    "nvidia-persistenced"
   ];
 
   time.timeZone = "Europe/Sofia";

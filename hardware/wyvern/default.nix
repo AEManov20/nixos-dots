@@ -11,6 +11,8 @@
     nvidiaSettings = true;
   };
 
+  hardware.nvidia-container-toolkit.enable = true;
+
   imports =
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];

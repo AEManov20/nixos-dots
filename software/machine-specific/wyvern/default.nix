@@ -1,6 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
-  imports = [ ../../. ];
+  imports = [
+    ../../.
+  ];
 
   services.openssh = {
     enable = true;
@@ -13,8 +15,10 @@
     };
   };
 
+  networking.interfaces.enp5s0.wakeOnLan.enable = true;
+
   networking.firewall = {
-    allowedTCPPorts = [ 22 ];
+    allowedTCPPorts = [ 22 8096 ];
     allowedUDPPorts = [ 2456 ];
   };
 
