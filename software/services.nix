@@ -7,6 +7,8 @@
     package = pkgs.mullvad-vpn;
   };
 
+  services.tailscale.enable = true;
+
   services.flatpak.enable = true;
 
   fileSystems."/mnt/pistorage" = {

@@ -5,7 +5,7 @@
     extraGroups = [ "wheel" "libvirtd" "wireshark" "docker" "uucp" "dialout" "tty" "adbusers" ];
     packages = with pkgs; [
       bitwarden-desktop
-      (chromium.override { enableWideVine = true; })
+      chromium
       dbeaver-bin
       wireshark
       bottles
