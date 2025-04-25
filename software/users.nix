@@ -9,12 +9,8 @@
       dbeaver-bin
       wireshark
       bottles
-      libreoffice
       zed-editor
       vesktop
-      kitty
-      rar
-      unrar
       r2modman
     ];
   };

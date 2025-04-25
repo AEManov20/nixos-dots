@@ -56,5 +56,10 @@
     cifs-utils
     rclone
     gitFull
+    libreoffice
+    alacritty
+    rar
+    unrar
+    ranger
   ];
 }

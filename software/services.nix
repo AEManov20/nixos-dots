@@ -12,7 +12,7 @@
   services.flatpak.enable = true;
 
   fileSystems."/mnt/pistorage" = {
-    device = "//192.168.1.14/pi_storage";
+    device = "//pi/pi_storage";
     fsType = "cifs";
     options = let
       # this line prevents hanging on network split

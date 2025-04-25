@@ -1,6 +1,17 @@
 { pkgs, ... }:
 {
+  services.libinput.enable = true;
+
+  services.pipewire = {
+    enable = true;
+    pulse.enable = true;
+  };
+
   services.desktopManager.plasma6.enable = true;
+
+  environment.plasma6.excludePackages = with pkgs; [
+    kdePackages.elisa
+  ];
 
   services.displayManager = {
     sddm = {
@@ -11,14 +22,10 @@
     defaultSession = "plasma";
   };
 
-  services.pipewire = {
+  programs.gamescope = {
     enable = true;
-    pulse.enable = true;
+    capSysNice = true;
   };
 
-  services.libinput.enable = true;
-
-  environment.plasma6.excludePackages = with pkgs; [
-    kdePackages.elisa
-  ];
+  programs.steam.gamescopeSession.enable = true;
 }
