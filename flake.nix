@@ -12,11 +12,11 @@
     nixosConfigurations.falkor = nixpkgs.lib.nixosSystem rec {
       system = "x86_64-linux";
 
-      # specialArgs = {
-      #   pkgs-stable = import nixpkgs-stable {
-      #     inherit system;
-      #   };
-      # };
+      specialArgs = {
+        pkgs-stable = import nixpkgs-stable {
+          inherit system;
+        };
+      };
 
       modules = [
         nixos-hardware.nixosModules.lenovo-thinkpad-e14-intel
