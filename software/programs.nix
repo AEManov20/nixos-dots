@@ -57,7 +57,7 @@
     rclone
     gitFull
     libreoffice
-    alacritty
+    kitty
     rar
     unrar
     ranger
