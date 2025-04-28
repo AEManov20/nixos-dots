@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, pkgs-stable, ... }:
 {
   imports = [ ../../. ];
 
@@ -12,6 +12,8 @@
   services.udev.packages = [
     pkgs.android-udev-rules
   ];
+
+  boot.kernelPackages = pkgs-stable.linuxPackages;
 
   system.stateVersion = "24.11";
 }

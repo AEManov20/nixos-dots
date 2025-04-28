@@ -35,6 +35,8 @@
   #   openFirewall = true;
   # };
 
+  boot.kernelPackages = pkgs.linuxPackages;
+
   networking.hostName = "wyvern";
 
   system.stateVersion = "24.11";
