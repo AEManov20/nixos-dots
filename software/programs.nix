@@ -61,5 +61,10 @@
     rar
     unrar
     ranger
+    chromium
+    wireshark
+    zed-editor
+    btop
+    fastfetch
   ];
 }
