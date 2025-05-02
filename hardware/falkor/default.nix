@@ -62,4 +62,7 @@
       # intel-media-sdk   # for older GPUs
     ];
   };
+
+  hardware.trackpoint.enable = true;
+  hardware.trackpoint.emulateWheel = config.hardware.trackpoint.enable;
 }

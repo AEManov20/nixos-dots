@@ -4,7 +4,7 @@
 
   networking.hostName = "falkor";
 
-  boot.kernelParams = [ "i915.force_probe=7d55" ];
+  boot.kernelParams = [ "i915.force_probe=7d55" "acpi_backlight=native" ];
 
   programs.adb.enable = true;
   

@@ -19,7 +19,9 @@
       };
 
       modules = [
-        nixos-hardware.nixosModules.lenovo-thinkpad-e14-intel
+	nixos-hardware.nixosModules.common-cpu-intel
+	nixos-hardware.nixosModules.common-pc-laptop-ssd
+	nixos-hardware.nixosModules.common-pc-laptop
         ./hardware/falkor
         ./software/machine-specific/falkor
       ];
