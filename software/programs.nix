@@ -66,5 +66,6 @@
     zed-editor
     btop
     fastfetch
+    ncdu
   ];
 }
