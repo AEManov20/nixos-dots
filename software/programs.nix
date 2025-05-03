@@ -5,7 +5,6 @@
   programs.wireshark.enable = true;
   programs.virt-manager.enable = true;
   programs.direnv.enable = true;
-  programs.firefox.enable = true;
   programs.kdeconnect.enable = true;
 
   programs.starship = {
@@ -61,11 +60,12 @@
     rar
     unrar
     ranger
-    chromium
     wireshark
     zed-editor
     btop
     fastfetch
     ncdu
+    librewolf
+    ungoogled-chromium
   ];
 }
