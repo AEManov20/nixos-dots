@@ -13,7 +13,7 @@
     pkgs.android-udev-rules
   ];
 
-  boot.kernelPackages = pkgs-stable.linuxPackages;
+  boot.kernelPackages = pkgs.linuxPackages;
 
   system.stateVersion = "24.11";
 }
