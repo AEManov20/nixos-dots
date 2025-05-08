@@ -6,12 +6,12 @@
       noto-fonts-cjk-sans
       noto-fonts-emoji
       liberation_ttf
-      fira-code
+      nerd-fonts.fira-code
     ];
 
     fontconfig = {
       defaultFonts = {
-        monospace = [ "Fira Code" ];
+        monospace = [ "FiraCode Nerd Font" ];
       };
     };
   };

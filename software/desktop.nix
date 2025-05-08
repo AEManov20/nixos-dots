@@ -7,20 +7,9 @@
     pulse.enable = true;
   };
 
-  services.desktopManager.plasma6.enable = true;
-
-  environment.plasma6.excludePackages = with pkgs; [
-    kdePackages.elisa
-    kdePackages.konsole
-  ];
-
-  services.displayManager = {
-    sddm = {
-      enable = true;
-      wayland.enable = true;
-    };
-
-    defaultSession = "plasma";
+  services.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
   };
 
   programs.gamescope = {
@@ -29,4 +18,13 @@
   };
 
   programs.steam.gamescopeSession.enable = true;
+
+  programs.uwsm.enable = true;
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+    withUWSM = true;
+  };
+  programs.hyprlock.enable = true;
+  services.hypridle.enable = true;
 }

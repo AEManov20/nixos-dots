@@ -6,6 +6,15 @@
   programs.virt-manager.enable = true;
   programs.direnv.enable = true;
   programs.kdeconnect.enable = true;
+  programs.waybar.enable = true;
+
+  programs.thunar = {
+    enable = true;
+    plugins = with pkgs.xfce; [
+      thunar-archive-plugin
+      thunar-volman
+    ];
+  };
 
   programs.starship = {
     enable = true;
@@ -29,17 +38,11 @@
     viAlias = true;
   };
 
-  programs.gamescope = {
-    enable = true;
-    capSysNice = true;
-  };
-
   programs.steam = {
     enable = true;
     # remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
     # dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
     localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
-    gamescopeSession.enable = true;
   };
 
   programs.gnupg.agent = {
@@ -67,5 +70,13 @@
     ncdu
     librewolf
     ungoogled-chromium
+    wofi
+    mako
+
+    kdePackages.breeze-gtk
+    kdePackages.breeze-icons
+    kdePackages.breeze
+
+    hyprpolkitagent
   ];
 }
