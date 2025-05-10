@@ -71,6 +71,7 @@
     ungoogled-chromium
     wofi
     mako
+    networkmanagerapplet
 
     dive
     podman-tui
