@@ -1,8 +1,13 @@
 { pkgs, ... }:
 {
-  virtualisation.waydroid.enable = true;
+  virtualisation.containers.enable = true;
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true;
+    defaultNetwork.settings.dns_enabled = true;
+  };
+
   virtualisation.spiceUSBRedirection.enable = true;
-  virtualisation.docker.enable = true;
   virtualisation.libvirtd = {
     enable = true;
     qemu = {

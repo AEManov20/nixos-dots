@@ -62,7 +62,6 @@
     kitty
     rar
     unrar
-    ranger
     wireshark
     zed-editor
     btop
@@ -72,6 +71,10 @@
     ungoogled-chromium
     wofi
     mako
+
+    dive
+    podman-tui
+    docker-compose
 
     kdePackages.breeze-gtk
     kdePackages.breeze-icons
