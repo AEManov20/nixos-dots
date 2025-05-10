@@ -7,6 +7,7 @@
       noto-fonts-emoji
       liberation_ttf
       nerd-fonts.fira-code
+      texlivePackages.fontawesome
     ];
 
     fontconfig = {
