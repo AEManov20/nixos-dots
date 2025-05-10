@@ -65,4 +65,5 @@
 
   hardware.trackpoint.enable = true;
   hardware.trackpoint.emulateWheel = config.hardware.trackpoint.enable;
+  hardware.cpu.x86.msr.enable = true;
 }
