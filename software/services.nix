@@ -1,7 +1,5 @@
 { pkgs, ... }:
 {
-  services.libinput.enable = true;
-
   services.mullvad-vpn = {
     enable = true;
     package = pkgs.mullvad-vpn;
@@ -15,6 +13,7 @@
   services.gvfs.enable = true; # Mount, trash, and other functionalities
   services.tumbler.enable = true; # Thumbnail support for images
   services.power-profiles-daemon.enable = true;
+  services.fwupd.enable = true;
 
   fileSystems."/mnt/pistorage" = {
     device = "//pi/pi_storage";

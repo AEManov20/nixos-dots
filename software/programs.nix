@@ -62,6 +62,8 @@
     kitty
     rar
     unrar
+    zip
+    unzip
     wireshark
     zed-editor
     btop
@@ -84,4 +86,6 @@
     hyprpolkitagent
     hyprshot
   ];
+
+  documentation.man.generateCaches = true;
 }
