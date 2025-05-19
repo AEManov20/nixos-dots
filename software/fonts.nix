@@ -13,6 +13,8 @@
     fontconfig = {
       defaultFonts = {
         monospace = [ "FiraCode Nerd Font" ];
+        serif = [ "Noto Serif" ];
+        sansSerif = [ "Noto Sans" ];
       };
     };
   };

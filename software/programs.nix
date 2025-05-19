@@ -2,7 +2,10 @@
 {
   programs.mtr.enable = true;
   programs.thunderbird.enable = true;
-  programs.wireshark.enable = true;
+  programs.wireshark = {
+    enable = true;
+    package = pkgs.wireshark-qt;
+  };
   programs.virt-manager.enable = true;
   programs.direnv.enable = true;
   programs.kdeconnect.enable = true;
@@ -64,7 +67,6 @@
     unrar
     zip
     unzip
-    wireshark
     zed-editor
     btop
     fastfetch
@@ -85,6 +87,10 @@
 
     hyprpolkitagent
     hyprshot
+    
+    nil
+    nixfmt-classic
+    nixd
   ];
 
   documentation.man.generateCaches = true;
