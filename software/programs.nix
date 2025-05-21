@@ -8,7 +8,10 @@
   };
   programs.virt-manager.enable = true;
   programs.direnv.enable = true;
-  programs.kdeconnect.enable = true;
+  programs.localsend = {
+    enable = true;
+    openFirewall = true;
+  };
   programs.waybar.enable = true;
 
   programs.thunar = {
@@ -76,14 +79,12 @@
     wofi
     mako
     networkmanagerapplet
+    feh
+    kdePackages.okular
 
     dive
     podman-tui
     docker-compose
-
-    kdePackages.breeze-gtk
-    kdePackages.breeze-icons
-    kdePackages.breeze
 
     hyprpolkitagent
     hyprshot
