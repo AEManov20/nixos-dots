@@ -10,9 +10,12 @@
     size = 16;
   };
 
-  dconf.settings = {
-    "org/gnome/desktop/interface" = {
-      color-scheme = "prefer-dark";
+  dconf = {
+    enable = true;
+    settings = {
+      "org/gnome/desktop/interface" = {
+        color-scheme = "prefer-dark";
+      };
     };
   };
 
@@ -34,10 +37,15 @@
       package = pkgs.kdePackages.breeze-icons;
       name = "breeze-dark";
     };
+
+    gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
+    gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;
   };
 
   qt = {
     enable = true;
+
+    platformTheme.name = "kde";
 
     style = {
       package = pkgs.kdePackages.breeze;
