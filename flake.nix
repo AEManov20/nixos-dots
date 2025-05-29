@@ -9,47 +9,46 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, nixos-hardware, ... }: {
-    nixosConfigurations.falkor = nixpkgs.lib.nixosSystem rec {
-      system = "x86_64-linux";
+  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, nixos-hardware, ... }:
+    let
+      homeManagerOpts = {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+        home-manager.backupFileExtension = "backup";
+        home-manager.users.alex = ./users/alex.nix;
+      };
+    in
+    {
+      nixosConfigurations.falkor = nixpkgs.lib.nixosSystem rec {
+        system = "x86_64-linux";
 
-      specialArgs = {
-        pkgs-stable = import nixpkgs-stable {
-          inherit system;
+        specialArgs = {
+          pkgs-stable = import nixpkgs-stable {
+            inherit system;
+          };
         };
+
+        modules = [
+          nixos-hardware.nixosModules.common-cpu-intel
+          nixos-hardware.nixosModules.common-pc-laptop-ssd
+          nixos-hardware.nixosModules.common-pc-laptop
+          ./hardware/falkor
+          ./software/machine-specific/falkor
+          home-manager.nixosModules.home-manager homeManagerOpts
+        ];
       };
 
-      modules = [
-        nixos-hardware.nixosModules.common-cpu-intel
-        nixos-hardware.nixosModules.common-pc-laptop-ssd
-        nixos-hardware.nixosModules.common-pc-laptop
-        ./hardware/falkor
-        ./software/machine-specific/falkor
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.alex = ./users/alex.nix;
-        }
-      ];
-    };
+      nixosConfigurations.wyvern = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
 
-    nixosConfigurations.wyvern = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-
-      modules = [
-        nixos-hardware.nixosModules.common-cpu-amd
-        nixos-hardware.nixosModules.common-pc-ssd
-        ./hardware/wyvern
-        ./software/machine-specific/wyvern
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.alex = ./users/alex.nix;
-        }
-      ];
+        modules = [
+          nixos-hardware.nixosModules.common-cpu-amd
+          nixos-hardware.nixosModules.common-pc-ssd
+          ./hardware/wyvern
+          ./software/machine-specific/wyvern
+          home-manager.nixosModules.home-manager homeManagerOpts
+        ];
+      };
     };
-  };
 }
 
