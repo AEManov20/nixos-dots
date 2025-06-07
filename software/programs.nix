@@ -71,6 +71,17 @@
     zip
     unzip
     zed-editor
+    (vscode-with-extensions.override {
+      vscodeExtensions = with vscode-extensions; [
+        vscodevim.vim
+        ms-vscode.cpptools
+        ms-vscode.cmake-tools
+        vadimcn.vscode-lldb
+        jnoortheen.nix-ide
+        arrterian.nix-env-selector
+        vscode-extensions.mkhl.direnv
+      ];
+    })
     btop
     fastfetch
     ncdu

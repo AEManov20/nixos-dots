@@ -48,6 +48,9 @@
     "libcusparse"
     "libnpp"
     "nvidia-persistenced"
+    "vscode-extension-ms-vscode-cpptools"
+    "vscode-with-extensions"
+    "vscode"
   ];
 
   time.timeZone = "Europe/Sofia";
