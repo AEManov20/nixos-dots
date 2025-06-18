@@ -12,7 +12,6 @@
     enable = true;
     openFirewall = true;
   };
-  programs.waybar.enable = true;
 
   programs.thunar = {
     enable = true;
@@ -59,6 +58,7 @@
   environment.sessionVariables = { NIXOS_OZONE_WL = "1"; };
   environment.systemPackages = with pkgs; [
     wl-clipboard
+    wayland-utils
     vlc
     mpv
     cifs-utils
@@ -74,35 +74,35 @@
     (vscode-with-extensions.override {
       vscodeExtensions = with vscode-extensions; [
         vscodevim.vim
-        ms-vscode.cpptools
         ms-vscode.cmake-tools
         vadimcn.vscode-lldb
         jnoortheen.nix-ide
         arrterian.nix-env-selector
-        vscode-extensions.mkhl.direnv
+        mkhl.direnv
+	rust-lang.rust-analyzer
+	llvm-vs-code-extensions.vscode-clangd
       ];
     })
     btop
     fastfetch
     ncdu
     librewolf
-    ungoogled-chromium
-    wofi
-    mako
+    brave
     networkmanagerapplet
-    feh
     kdePackages.okular
+    mangohud
 
     dive
     podman-tui
     docker-compose
-
-    hyprpolkitagent
-    hyprshot
     
     nil
     nixfmt-classic
     nixd
+
+    kdePackages.discover
+    kdePackages.ksystemlog
+    kdePackages.sddm-kcm
   ];
 
   documentation.man.generateCaches = true;

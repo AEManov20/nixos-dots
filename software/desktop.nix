@@ -12,19 +12,12 @@
     wayland.enable = true;
   };
 
+  services.desktopManager.plasma6.enable = true;
+
   programs.gamescope = {
     enable = true;
     capSysNice = true;
   };
 
   programs.steam.gamescopeSession.enable = true;
-
-  programs.uwsm.enable = true;
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-    withUWSM = true;
-  };
-  programs.hyprlock.enable = true;
-  services.hypridle.enable = true;
 }
