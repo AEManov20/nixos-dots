@@ -4,6 +4,7 @@
     x11.enable = true;
     dotIcons.enable = true;
     hyprcursor.enable = true;
+    enable = true;
 
     package = pkgs.bibata-cursors;
     name = "Bibata-Original-Classic";
@@ -28,30 +29,30 @@
       size = 10;
     };
 
-    theme = {
-      package = pkgs.kdePackages.breeze-gtk;
-      name = "Breeze-Dark";
-    };
+    # theme = {
+    #   package = pkgs.kdePackages.breeze-gtk;
+    #   name = "Breeze-Dark";
+    # };
 
-    iconTheme = {
-      package = pkgs.kdePackages.breeze-icons;
-      name = "breeze-dark";
-    };
+    # iconTheme = {
+    #   package = pkgs.kdePackages.breeze-icons;
+    #   name = "breeze-dark";
+    # };
 
     gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
     gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;
   };
 
-  qt = {
-    enable = true;
+  # qt = {
+  #   enable = true;
 
-    platformTheme.name = "kde";
+  #   platformTheme.name = "kde";
 
-    style = {
-      package = pkgs.kdePackages.breeze;
-      name = "Breeze";
-    };
-  };
+  #   style = {
+  #     package = pkgs.kdePackages.breeze;
+  #     name = "Breeze";
+  #   };
+  # };
 
   home.stateVersion = "24.11";
 }
