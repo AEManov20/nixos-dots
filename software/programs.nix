@@ -89,7 +89,6 @@
     librewolf
     brave
     networkmanagerapplet
-    kdePackages.okular
     mangohud
 
     dive
@@ -100,6 +99,7 @@
     nixfmt-classic
     nixd
 
+    kdePackages.okular
     kdePackages.discover
     kdePackages.ksystemlog
     kdePackages.sddm-kcm
