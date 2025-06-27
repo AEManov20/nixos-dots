@@ -8,7 +8,7 @@
 
   programs.adb.enable = true;
   
-  services.blueman.enable = true;
+  # services.blueman.enable = true;
   services.throttled.enable = false;
   services.udev.packages = [
     pkgs.android-udev-rules
