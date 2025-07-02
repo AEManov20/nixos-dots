@@ -1,5 +1,16 @@
 { pkgs, ... }:
 {
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    autosuggestions.enable = true;
+    syntaxHighlighting.enable = true;
+  
+    shellAliases = {
+      ll = "ls -l";
+    };
+  };
+
   programs.mtr.enable = true;
   programs.thunderbird.enable = true;
   programs.wireshark = {
@@ -71,24 +82,10 @@
     zip
     unzip
     zed-editor
-    (vscode-with-extensions.override {
-      vscodeExtensions = with vscode-extensions; [
-        vscodevim.vim
-        ms-vscode.cmake-tools
-        vadimcn.vscode-lldb
-        jnoortheen.nix-ide
-        arrterian.nix-env-selector
-        mkhl.direnv
-	rust-lang.rust-analyzer
-	llvm-vs-code-extensions.vscode-clangd
-      ];
-    })
     btop
     fastfetch
     ncdu
     librewolf
-    brave
-    networkmanagerapplet
     mangohud
 
     dive
@@ -103,6 +100,23 @@
     kdePackages.discover
     kdePackages.ksystemlog
     kdePackages.sddm-kcm
+
+    (vscode-with-extensions.override {
+      vscodeExtensions = with vscode-extensions; [
+        vscodevim.vim
+        ms-vscode.cmake-tools
+        vadimcn.vscode-lldb
+        jnoortheen.nix-ide
+        arrterian.nix-env-selector
+        mkhl.direnv
+	rust-lang.rust-analyzer
+	llvm-vs-code-extensions.vscode-clangd
+      ];
+    })
+  ];
+
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [
+    konsole
   ];
 
   documentation.man.generateCaches = true;
