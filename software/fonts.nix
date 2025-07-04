@@ -6,13 +6,13 @@
       noto-fonts-cjk-sans
       noto-fonts-emoji
       liberation_ttf
-      nerd-fonts.fira-code
+      ibm-plex
       texlivePackages.fontawesome
     ];
 
     fontconfig = {
       defaultFonts = {
-        monospace = [ "FiraCode Nerd Font" ];
+        monospace = [ "IBM Plex Mono" ];
         serif = [ "Noto Serif" ];
         sansSerif = [ "Noto Sans" ];
       };
