@@ -89,7 +89,7 @@
     mangohud
 
     dive
-    podman-tui
+    # podman-tui
     docker-compose
     
     nil
