@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, zen-browser, ... }:
 {
   programs.zsh = {
     enable = true;
@@ -85,7 +85,7 @@
     btop
     fastfetch
     ncdu
-    librewolf
+    zen-browser
     mangohud
 
     dive
