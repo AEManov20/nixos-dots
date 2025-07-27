@@ -44,8 +44,16 @@
         ];
       };
 
-      nixosConfigurations.wyvern = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.wyvern = nixpkgs.lib.nixosSystem rec {
         system = "x86_64-linux";
+	
+        specialArgs = {
+          pkgs-stable = import nixpkgs-stable {
+            inherit system;
+          };
+
+	  zen-browser = zen-browser.packages.${system}.twilight;
+        };
 
         modules = [
           nixos-hardware.nixosModules.common-cpu-amd
