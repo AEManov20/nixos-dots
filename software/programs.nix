@@ -87,6 +87,7 @@
     ncdu
     zen-browser
     mangohud
+    renderdoc
 
     dive
     # podman-tui
