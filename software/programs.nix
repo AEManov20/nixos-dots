@@ -102,6 +102,10 @@
     kdePackages.ksystemlog
     kdePackages.sddm-kcm
 
+    lact
+
+    blender-hip
+
     (vscode-with-extensions.override {
       vscodeExtensions = with vscode-extensions; [
         vscodevim.vim
@@ -112,6 +116,13 @@
         mkhl.direnv
 	rust-lang.rust-analyzer
 	llvm-vs-code-extensions.vscode-clangd
+      ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+        {
+          name = "wgsl";
+	  publisher = "PolyMeilex";
+          version = "0.1.17";
+          sha256 = "sha256-vGqvVrr3wNG6HOJxOnJEohdrzlBYspysTLQvWuP0QIw=";
+	}
       ];
     })
   ];

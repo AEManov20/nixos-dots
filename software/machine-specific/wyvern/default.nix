@@ -15,7 +15,7 @@
     };
   };
 
-  networking.interfaces.enp5s0.wakeOnLan.enable = true;
+  networking.interfaces.enp7s0.wakeOnLan.enable = true;
 
   networking.firewall = {
     allowedTCPPorts = [ 22 8096 ];
@@ -27,8 +27,10 @@
     autoStart = true;
     capSysAdmin = true;
     openFirewall = true;
-    package = pkgs.sunshine.override { cudaSupport = true; };
   };
+
+  systemd.packages = with pkgs; [ lact ];
+  systemd.services.lactd.wantedBy = ["multi-user.target"];
 
   fileSystems."/mnt/pistorage" = {
     device = "//192.168.1.14/pi_storage";

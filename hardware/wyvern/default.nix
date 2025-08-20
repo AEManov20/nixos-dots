@@ -2,23 +2,22 @@
 {
   hardware.graphics.enable = true;
 
-  services.xserver.videoDrivers = ["nvidia"];
-
-  hardware.nvidia = {
-    modesetting.enable = true;
-    powerManagement.enable = true;
-    open = true;
-    nvidiaSettings = true;
-  };
-
-  hardware.nvidia-container-toolkit.enable = true;
+  services.xserver.videoDrivers = ["amdgpu"];
 
   imports =
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
+  hardware.graphics.extraPackages = with pkgs; [
+    amdvlk
+  ];
+
+  hardware.graphics.extraPackages32 = with pkgs; [
+    driversi686Linux.amdvlk
+  ];
+
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
-  boot.initrd.kernelModules = [ ];
+  boot.initrd.kernelModules = [ "amdgpu" ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
