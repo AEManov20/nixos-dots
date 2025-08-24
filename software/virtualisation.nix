@@ -4,6 +4,8 @@
     enable = true;
     storageDriver = "btrfs";
   };
+
+  virtualisation.waydroid.enable = true;
   # virtualisation.containers.enable = true;
   # virtualisation.podman = {
   #   enable = true;

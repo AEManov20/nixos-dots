@@ -9,11 +9,7 @@
     ];
 
   hardware.graphics.extraPackages = with pkgs; [
-    amdvlk
-  ];
-
-  hardware.graphics.extraPackages32 = with pkgs; [
-    driversi686Linux.amdvlk
+    rocmPackages.clr.icd
   ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
