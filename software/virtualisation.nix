@@ -1,17 +1,17 @@
 { pkgs, ... }:
 {
-  virtualisation.docker = {
-    enable = true;
-    storageDriver = "btrfs";
-  };
+  # virtualisation.docker = {
+  #   enable = true;
+  #   storageDriver = "btrfs";
+  # };
 
   virtualisation.waydroid.enable = true;
-  # virtualisation.containers.enable = true;
-  # virtualisation.podman = {
-  #   enable = true;
-  #   dockerCompat = true;
-  #   defaultNetwork.settings.dns_enabled = true;
-  # };
+  virtualisation.containers.enable = true;
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true;
+    defaultNetwork.settings.dns_enabled = true;
+  };
 
   virtualisation.spiceUSBRedirection.enable = true;
   virtualisation.libvirtd = {

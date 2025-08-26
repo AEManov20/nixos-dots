@@ -90,8 +90,8 @@
     renderdoc
 
     dive
-    # podman-tui
-    docker-compose
+    podman-tui
+    podman-compose
     
     nil
     nixfmt-classic
