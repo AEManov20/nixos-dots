@@ -83,11 +83,13 @@
     unzip
     zed-editor
     btop
+    nvtopPackages.amd
     fastfetch
     ncdu
     zen-browser
     mangohud
     renderdoc
+    vesktop
 
     dive
     podman-tui
@@ -101,6 +103,9 @@
     kdePackages.discover
     kdePackages.ksystemlog
     kdePackages.sddm-kcm
+    kdePackages.audiocd-kio
+
+    libcdio
 
     lact
 
