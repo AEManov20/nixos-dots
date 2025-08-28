@@ -42,6 +42,10 @@
     in ["${automount_opts},credentials=/etc/nixos/smb-secrets,uid=1000,gid=100"];
   };
 
+  fileSystems."/".options = [ "compress=zstd" ];
+  fileSystems."/home".options = [ "compress=zstd" ];
+  fileSystems."/nix".options = [ "compress=zstd" "noatime" ];
+
   # services.jellyfin = {
   #   enable = true;
   #   openFirewall = true;
