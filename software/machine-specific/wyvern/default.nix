@@ -33,23 +33,18 @@
   systemd.services.lactd.wantedBy = ["multi-user.target"];
 
   fileSystems."/mnt/pistorage" = {
-    device = "//192.168.1.14/pi_storage";
-    fsType = "cifs";
+    device = "alex@pi.lan:/mnt/pi_storage";
+    fsType = "sshfs";
     options = let
       # this line prevents hanging on network split
-      automount_opts = "x-systemd.automount,noauto,nofail,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
+      automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
 
-    in ["${automount_opts},credentials=/etc/nixos/smb-secrets,uid=1000,gid=100"];
+    in ["${automount_opts},nodev,noatime,allow_other,IdentityFile=/root/.ssh/id_ed25519_wyvern,gid=100"];
   };
 
   fileSystems."/".options = [ "compress=zstd" ];
   fileSystems."/home".options = [ "compress=zstd" ];
   fileSystems."/nix".options = [ "compress=zstd" "noatime" ];
-
-  # services.jellyfin = {
-  #   enable = true;
-  #   openFirewall = true;
-  # };
 
   boot.kernelPackages = pkgs.linuxPackages;
 
