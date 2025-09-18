@@ -15,4 +15,10 @@
   services.tumbler.enable = true; # Thumbnail support for images
   services.power-profiles-daemon.enable = true;
   services.fwupd.enable = true;
+
+  services.pcscd.enable = true;
+  services.pcscd.plugins = [
+    pkgs.pcsc-safenet
+    pkgs.ccid
+  ];
 }

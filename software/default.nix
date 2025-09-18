@@ -27,9 +27,10 @@
     "vscode-with-extensions"
     "vscode"
     "blender"
+    "pcsc-safenet"
   ];
 
-  time.timeZone = "Europe/Sofia";
+  time.timeZone = "Europe/Vienna";
 
   i18n.defaultLocale = "en_US.UTF-8";
 }

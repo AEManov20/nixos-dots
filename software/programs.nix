@@ -136,6 +136,7 @@
     mangohud
     renderdoc
     vesktop
+    bottles
 
     dive
     podman-tui
@@ -150,12 +151,16 @@
     kdePackages.ksystemlog
     kdePackages.sddm-kcm
     kdePackages.audiocd-kio
+    kdePackages.kleopatra
 
     libcdio
 
     lact
 
     blender-hip
+
+    opensc
+    libp11
 
     (vscode-with-extensions.override {
       vscodeExtensions = with vscode-extensions; [
