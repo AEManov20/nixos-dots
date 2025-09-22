@@ -1,6 +1,10 @@
 { config, lib, pkgs, modulesPath, ... }:
 {
   hardware.graphics.enable = true;
+  hardware.logitech.wireless = {
+    enable = true;
+    enableGraphical = true;
+  };
 
   services.xserver.videoDrivers = ["amdgpu"];
 
