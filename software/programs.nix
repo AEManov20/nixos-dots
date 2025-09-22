@@ -14,6 +14,7 @@
   programs.mtr.enable = true;
   programs.thunderbird.enable = true;
   programs.wireshark = {
+    usbmon.enable = true;
     enable = true;
     package = pkgs.wireshark-qt;
   };
@@ -137,6 +138,8 @@
     renderdoc
     vesktop
     bottles
+    solaar
+    chromium
 
     dive
     podman-tui
