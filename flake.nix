@@ -6,14 +6,17 @@
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
 
-    zen-browser.url = "github:0xc000022070/zen-browser-flake";
-    zen-browser.inputs.nixpkgs.follows = "nixpkgs";
+    # zen-browser.url = "github:0xc000022070/zen-browser-flake";
+    # zen-browser.inputs.nixpkgs.follows = "nixpkgs";
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    kwin-effects-forceblur.url = "github:taj-ny/kwin-effects-forceblur";
+    kwin-effects-forceblur.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, nixos-hardware, zen-browser, ... }:
+  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, nixos-hardware, kwin-effects-forceblur, ... }:
     let
       homeManagerOpts = {
         home-manager.useGlobalPkgs = true;
@@ -31,7 +34,8 @@
             inherit system;
           };
 
-	  zen-browser = zen-browser.packages.${system}.twilight;
+	  # zen-browser = zen-browser.packages.${system}.twilight;
+	  kwin-effects-forceblur = kwin-effects-forceblur.packages.${system};
         };
 
         modules = [
@@ -52,7 +56,8 @@
             inherit system;
           };
 
-	  zen-browser = zen-browser.packages.${system}.twilight;
+	  # zen-browser = zen-browser.packages.${system}.twilight;
+	  kwin-effects-forceblur = kwin-effects-forceblur.packages.${system};
         };
 
         modules = [

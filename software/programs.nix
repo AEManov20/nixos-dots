@@ -1,4 +1,4 @@
-{ pkgs, zen-browser, ... }:
+{ pkgs, kwin-effects-forceblur, ... }:
 {
   programs.zsh = {
     enable = true;
@@ -108,11 +108,12 @@
     };
   };
 
-
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
   };
+
+  programs.kdeconnect.enable = true;
 
   environment.sessionVariables = { NIXOS_OZONE_WL = "1"; };
   environment.systemPackages = with pkgs; [
@@ -155,6 +156,8 @@
     kdePackages.sddm-kcm
     kdePackages.audiocd-kio
     kdePackages.kleopatra
+    kdePackages.krohnkite
+    kwin-effects-forceblur.default
 
     libcdio
 
