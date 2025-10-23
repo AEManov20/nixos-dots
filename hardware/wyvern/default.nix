@@ -6,6 +6,8 @@
     enableGraphical = true;
   };
 
+  hardware.opentabletdriver.enable = true;
+
   services.xserver.videoDrivers = ["amdgpu"];
 
   imports =
