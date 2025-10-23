@@ -180,10 +180,10 @@
 	llvm-vs-code-extensions.vscode-clangd
       ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
-          name = "wgsl";
-	  publisher = "PolyMeilex";
-          version = "0.1.17";
-          sha256 = "sha256-vGqvVrr3wNG6HOJxOnJEohdrzlBYspysTLQvWuP0QIw=";
+	  name = "vscode-liquidsoap";
+	  publisher = "savonet";
+	  version = "0.2.0";
+	  hash = "sha256-CClN1MU/qyGw969Zp7SCNDOvJM4qsWHaHyag9oNdqGQ=";
 	}
       ];
     })
