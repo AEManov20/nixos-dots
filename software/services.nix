@@ -5,7 +5,6 @@
     package = pkgs.mullvad-vpn;
   };
 
-  services.protonmail-bridge.enable = true;
   services.tailscale.enable = true;
 
   services.flatpak.enable = true;
