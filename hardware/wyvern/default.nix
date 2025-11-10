@@ -7,6 +7,7 @@
   };
 
   hardware.opentabletdriver.enable = true;
+  hardware.bluetooth.enable = true;
 
   services.xserver.videoDrivers = ["amdgpu"];
 
