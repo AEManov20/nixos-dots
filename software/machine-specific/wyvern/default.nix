@@ -33,7 +33,7 @@
   systemd.services.lactd.wantedBy = ["multi-user.target"];
 
   fileSystems."/mnt/pistorage" = {
-    device = "alex@pi.lan:/mnt/pi_storage";
+    device = "alex@192.168.1.14:/mnt/pi_storage";
     fsType = "sshfs";
     options = let
       # this line prevents hanging on network split
@@ -46,7 +46,10 @@
   fileSystems."/home".options = [ "compress=zstd" ];
   fileSystems."/nix".options = [ "compress=zstd" "noatime" ];
 
-  boot.kernelPackages = pkgs.linuxPackages;
+  boot = {
+    kernelPackages = pkgs.linuxPackages;
+    extraModulePackages = with config.boot.kernelPackages; [ rtw88 ];
+  };
 
   networking.hostName = "wyvern";
 
