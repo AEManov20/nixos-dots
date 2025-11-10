@@ -140,7 +140,7 @@
     vesktop
     bottles
     solaar
-    chromium
+    (chromium.override { enableWideVine = true; })
 
     dive
     podman-tui
