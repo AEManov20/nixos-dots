@@ -1,10 +1,5 @@
 { pkgs, ... }:
 {
-  services.mullvad-vpn = {
-    enable = true;
-    package = pkgs.mullvad-vpn;
-  };
-
   services.tailscale.enable = true;
 
   services.flatpak.enable = true;
