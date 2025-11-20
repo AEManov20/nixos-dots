@@ -4,23 +4,7 @@
     ../../.
   ];
 
-  services.openssh = {
-    enable = true;
-    ports = [ 22 ];
-    settings = {
-      PasswordAuthentication = false;
-      UseDns = true;
-      X11Forwarding = false;
-      PermitRootLogin = "no";
-    };
-  };
-
   networking.interfaces.enp7s0.wakeOnLan.enable = true;
-
-  networking.firewall = {
-    allowedTCPPorts = [ 22 8096 ];
-    allowedUDPPorts = [ 2456 ];
-  };
 
   services.sunshine = {
     enable = true;
