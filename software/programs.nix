@@ -132,6 +132,7 @@
     bottles
     solaar
     (chromium.override { enableWideVine = true; })
+    borgbackup
 
     dive
     podman-tui
