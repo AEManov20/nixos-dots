@@ -1,5 +1,18 @@
 { pkgs, ... }:
 {
+  services.openssh = {
+    enable = true;
+    openFirewall = true;
+    ports = [ 22 ];
+    settings = {
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
+      PermitRootLogin = "no";
+      UseDns = true;
+      X11Forwarding = false;
+    };
+  };
+
   services.tailscale.enable = true;
 
   services.flatpak.enable = true;
