@@ -3,11 +3,8 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
-
-    # zen-browser.url = "github:0xc000022070/zen-browser-flake";
-    # zen-browser.inputs.nixpkgs.follows = "nixpkgs";
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -34,7 +31,6 @@
             inherit system;
           };
 
-	  # zen-browser = zen-browser.packages.${system}.twilight;
 	  kwin-effects-forceblur = kwin-effects-forceblur.packages.${system};
         };
 
@@ -56,7 +52,6 @@
             inherit system;
           };
 
-	  # zen-browser = zen-browser.packages.${system}.twilight;
 	  kwin-effects-forceblur = kwin-effects-forceblur.packages.${system};
         };
 
