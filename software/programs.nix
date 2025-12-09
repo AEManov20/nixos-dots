@@ -132,6 +132,7 @@
     bottles
     solaar
     borgbackup
+    chromium
 
     dive
     podman-tui
