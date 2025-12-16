@@ -122,7 +122,8 @@
     zip
     unzip
     zed-editor
-    btop
+    htop
+    nethogs
     nvtopPackages.amd
     fastfetch
     ncdu
