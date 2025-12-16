@@ -6,24 +6,17 @@
 
   networking.interfaces.enp7s0.wakeOnLan.enable = true;
 
-  services.sunshine = {
-    enable = true;
-    autoStart = true;
-    capSysAdmin = true;
-    openFirewall = true;
-  };
-
   systemd.packages = with pkgs; [ lact ];
   systemd.services.lactd.wantedBy = ["multi-user.target"];
 
-  fileSystems."/mnt/pistorage" = {
-    device = "alex@192.168.1.14:/mnt/pi_storage";
-    fsType = "sshfs";
+  fileSystems."/mnt/pi_storage/dump" = {
+    device = "100.71.109.115:/mnt/pi_storage/dump";
+    fsType = "nfs";
     options = let
       # this line prevents hanging on network split
       automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
 
-    in ["${automount_opts},nodev,noatime,allow_other,IdentityFile=/root/.ssh/id_ed25519_wyvern,gid=100"];
+    in ["${automount_opts},nodev,noatime"];
   };
 
   fileSystems."/".options = [ "compress=zstd" ];

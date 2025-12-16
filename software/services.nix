@@ -28,4 +28,6 @@
     pkgs.pcsc-safenet
     pkgs.ccid
   ];
+
+  services.rpcbind.enable = true;
 }
