@@ -10,8 +10,6 @@
   };
 
   boot.kernelParams = [ "i915.force_probe=7d55" "acpi_backlight=native" ];
-
-  programs.adb.enable = true;
   
   services.throttled.enable = false;
 

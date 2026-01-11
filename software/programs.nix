@@ -105,14 +105,14 @@
     enableSSHSupport = true;
   };
 
-  programs.kdeconnect.enable = true;
-
   environment.sessionVariables = { NIXOS_OZONE_WL = "1"; };
   environment.systemPackages = with pkgs; [
     wl-clipboard
     wayland-utils
     vlc
     mpv
+    strawberry
+    high-tide
     rclone
     gitFull
     libreoffice
@@ -121,50 +121,53 @@
     unrar
     zip
     unzip
-    zed-editor
+    vscode
     htop
     nethogs
     nvtopPackages.amd
     fastfetch
     ncdu
     mangohud
-    renderdoc
     vesktop
     bottles
     solaar
     borgbackup
     chromium
+    pcmanfm
+    qalculate-gtk
 
     dive
     podman-tui
     podman-compose
     
     nil
-    nixfmt-classic
+    nixfmt
     nixd
 
-    kdePackages.okular
-    kdePackages.discover
-    kdePackages.ksystemlog
-    kdePackages.sddm-kcm
-    kdePackages.audiocd-kio
+    swayimg
     kdePackages.kleopatra
-    kdePackages.krohnkite
-    kwin-effects-forceblur.default
 
     libcdio
+    android-tools
 
     lact
 
-    blender-hip
+    pkgsRocm.blender
 
     opensc
     libp11
+
+    tor-browser
   ];
 
-  environment.plasma6.excludePackages = with pkgs.kdePackages; [
-    konsole
+  environment.cosmic.excludePackages = with pkgs; [
+    cosmic-edit
+    cosmic-player
+    cosmic-term
+    cosmic-files
   ];
 
   documentation.man.generateCaches = true;
+
+  xdg.portal.enable = true;
 }
