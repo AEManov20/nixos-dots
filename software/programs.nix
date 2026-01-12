@@ -133,7 +133,6 @@
     solaar
     borgbackup
     chromium
-    pcmanfm
     qalculate-gtk
 
     dive
@@ -164,7 +163,6 @@
     cosmic-edit
     cosmic-player
     cosmic-term
-    cosmic-files
   ];
 
   documentation.man.generateCaches = true;
