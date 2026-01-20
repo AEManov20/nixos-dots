@@ -24,7 +24,7 @@
   fileSystems."/nix".options = [ "compress=zstd" "noatime" ];
 
   boot = {
-    kernelPackages = pkgs.linuxPackages;
+    kernelPackages = pkgs.linuxPackages_zen;
     extraModulePackages = with config.boot.kernelPackages; [ rtw88 ];
   };
 

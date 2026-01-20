@@ -121,7 +121,7 @@
     unrar
     zip
     unzip
-    vscode
+    zed-editor
     htop
     nethogs
     nvtopPackages.amd
@@ -157,6 +157,10 @@
     libp11
 
     tor-browser
+  ];
+
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [
+    konsole
   ];
 
   environment.cosmic.excludePackages = with pkgs; [

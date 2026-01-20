@@ -48,15 +48,15 @@
     gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;
   };
 
-  qt = {
-    enable = true;
+  # qt = {
+  #   enable = true;
 
-    platformTheme.name = "kde";
+  #   platformTheme.name = "kde";
 
-    style = {
-      name = "adwaita-dark";
-    };
-  };
+  #   style = {
+  #     name = "adwaita-dark";
+  #   };
+  # };
 
   home.stateVersion = "24.11";
 }
