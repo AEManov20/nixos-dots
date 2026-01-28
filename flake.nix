@@ -11,9 +11,12 @@
 
     kwin-effects-forceblur.url = "github:taj-ny/kwin-effects-forceblur";
     kwin-effects-forceblur.inputs.nixpkgs.follows = "nixpkgs";
+
+    high-tide-flake.url = "github:Nokse22/high-tide";
+    high-tide-flake.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, nixos-hardware, kwin-effects-forceblur, ... }:
+  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, nixos-hardware, kwin-effects-forceblur, high-tide-flake, ... }:
     let
       homeManagerOpts = {
         home-manager.useGlobalPkgs = true;
@@ -32,6 +35,7 @@
           };
 
 	  kwin-effects-forceblur = kwin-effects-forceblur.packages.${system};
+	  high-tide-ext = high-tide-flake.packages.${system}.high-tide;
         };
 
         modules = [
@@ -53,6 +57,7 @@
           };
 
 	  kwin-effects-forceblur = kwin-effects-forceblur.packages.${system};
+	  high-tide-ext = high-tide-flake.packages.${system}.high-tide;
         };
 
         modules = [

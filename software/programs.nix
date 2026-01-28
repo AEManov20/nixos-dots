@@ -1,4 +1,4 @@
-{ pkgs, kwin-effects-forceblur, ... }:
+{ pkgs, kwin-effects-forceblur, high-tide-ext, ... }:
 {
   programs.zsh = {
     enable = true;
@@ -112,7 +112,7 @@
     vlc
     mpv
     strawberry
-    high-tide
+    high-tide-ext
     rclone
     gitFull
     libreoffice
