@@ -128,7 +128,7 @@
     fastfetch
     ncdu
     mangohud
-    vesktop
+    discord
     bottles
     solaar
     borgbackup

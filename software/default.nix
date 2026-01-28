@@ -28,6 +28,7 @@
     "vscode"
     "blender"
     "pcsc-safenet"
+    "discord"
   ];
 
   time.timeZone = "Europe/Vienna";
