@@ -129,6 +129,7 @@
     ncdu
     mangohud
     discord
+    element-desktop
     bottles
     solaar
     borgbackup
