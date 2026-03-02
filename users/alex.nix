@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, lib, ... }: {
   home.pointerCursor = {
     gtk.enable = true;
     x11.enable = true;
@@ -46,6 +46,24 @@
     colorScheme = "dark";
     gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
     gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;
+  };
+
+  programs.zed-editor = {
+    enable = true;
+
+    userSettings = {
+      assistant.enable = false;
+
+      node = {
+        path = lib.getExe pkgs.nodejs;
+        npm_path = lib.getExe' pkgs.nodejs "npm";
+      };
+
+      hour_format = "hour24";
+      auto_update = false;
+
+      vim_mode = true;
+    };
   };
 
   # qt = {
