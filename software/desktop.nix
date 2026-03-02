@@ -21,10 +21,10 @@
                         {
                             type = ladspa
                             name = rnnoise
-                            plugin = /nix/store/7n1fbs83hiykr17yms5dsjhbvrvam7kp-rnnoise-plugin-1.10/lib/ladspa/librnnoise_ladspa.so
+                            plugin = ${pkgs.rnnoise-plugin}/lib/ladspa/librnnoise_ladspa.so
                             label = noise_suppressor_mono
                             control = {
-                                "VAD Threshold (%)" = 50.0
+                                "VAD Threshold (%)" = 90.0
                                 "VAD Grace Period (ms)" = 200
                                 "Retroactive VAD Grace (ms)" = 0
                             }

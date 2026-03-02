@@ -16,7 +16,7 @@
   programs.wireshark = {
     usbmon.enable = true;
     enable = true;
-    package = pkgs.wireshark-qt;
+    package = pkgs.wireshark;
   };
   programs.virt-manager.enable = true;
   programs.direnv.enable = true;
@@ -121,7 +121,6 @@
     unrar
     zip
     unzip
-    zed-editor
     htop
     nethogs
     nvtopPackages.amd
@@ -170,7 +169,7 @@
     cosmic-term
   ];
 
-  documentation.man.generateCaches = true;
+  documentation.man.cache.enable = true;
 
   xdg.portal.enable = true;
 }
