@@ -40,13 +40,6 @@
     };
   };
 
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-    vimAlias = true;
-    viAlias = true;
-  };
-
   programs.steam = {
     enable = true;
     # remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
@@ -161,6 +154,7 @@
     borgbackup
     chromium
     qalculate-gtk
+    helix
 
     dive
     podman-tui
