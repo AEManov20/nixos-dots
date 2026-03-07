@@ -2,7 +2,6 @@
 {
   imports = [
     ../../.
-    ../../impermanence.nix
   ];
 
   networking.hostName = "falkor";
