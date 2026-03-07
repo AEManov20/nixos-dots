@@ -11,15 +11,24 @@
       UseDns = true;
       X11Forwarding = false;
     };
+
+    hostKeys = [
+      {
+        bits = 4096;
+        path = "/etc/ssh/ssh_host_rsa_key";
+        type = "rsa";
+      }
+      {
+        path = "/etc/ssh/ssh_host_ed25519_key";
+        type = "ed25519";
+      }
+    ];
   };
 
-  services.tailscale.enable = true;
-
-  services.flatpak.enable = true;
-
   security.polkit.enable = true;
-  services.gvfs.enable = true; # Mount, trash, and other functionalities
-  services.tumbler.enable = true; # Thumbnail support for images
+
+  services.tailscale.enable = true;
+  services.flatpak.enable = true;
   services.power-profiles-daemon.enable = true;
   services.fwupd.enable = true;
   services.system76-scheduler.enable = true;

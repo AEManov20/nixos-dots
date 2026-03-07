@@ -1,6 +1,9 @@
 { pkgs, pkgs-stable, ... }:
 {
-  imports = [ ../../. ];
+  imports = [
+    ../../.
+    ../../impermanence.nix
+  ];
 
   networking.hostName = "falkor";
 

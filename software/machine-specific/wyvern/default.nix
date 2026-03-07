@@ -19,10 +19,6 @@
     in ["${automount_opts},nodev,noatime"];
   };
 
-  fileSystems."/".options = [ "compress=zstd" ];
-  fileSystems."/home".options = [ "compress=zstd" ];
-  fileSystems."/nix".options = [ "compress=zstd" "noatime" ];
-
   boot = {
     kernelPackages = pkgs.linuxPackages_zen;
     extraModulePackages = with config.boot.kernelPackages; [ rtw88 ];

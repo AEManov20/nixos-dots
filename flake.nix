@@ -9,14 +9,14 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    kwin-effects-forceblur.url = "github:taj-ny/kwin-effects-forceblur";
-    kwin-effects-forceblur.inputs.nixpkgs.follows = "nixpkgs";
-
     high-tide-flake.url = "github:Nokse22/high-tide";
     high-tide-flake.inputs.nixpkgs.follows = "nixpkgs";
+
+    impermanence.url = "github:nix-community/impermanence";
+    impermanence.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, nixos-hardware, kwin-effects-forceblur, high-tide-flake, ... }:
+  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, nixos-hardware, high-tide-flake, impermanence }:
     let
       homeManagerOpts = {
         home-manager.useGlobalPkgs = true;
@@ -34,11 +34,11 @@
             inherit system;
           };
 
-	  kwin-effects-forceblur = kwin-effects-forceblur.packages.${system};
-	  high-tide-ext = high-tide-flake.packages.${system}.high-tide;
+          high-tide-ext = high-tide-flake.packages.${system}.high-tide;
         };
 
         modules = [
+          impermanence.nixosModules.impermanence
           nixos-hardware.nixosModules.common-cpu-intel
           nixos-hardware.nixosModules.common-pc-laptop-ssd
           nixos-hardware.nixosModules.common-pc-laptop
@@ -56,13 +56,12 @@
             inherit system;
           };
 
-	  kwin-effects-forceblur = kwin-effects-forceblur.packages.${system};
-	  high-tide-ext = high-tide-flake.packages.${system}.high-tide;
+          high-tide-ext = high-tide-flake.packages.${system}.high-tide;
         };
 
         modules = [
-	  nixos-hardware.nixosModules.gigabyte-b550
-	  nixos-hardware.nixosModules.common-gpu-amd
+          nixos-hardware.nixosModules.gigabyte-b550
+          nixos-hardware.nixosModules.common-gpu-amd
           nixos-hardware.nixosModules.common-cpu-amd
           nixos-hardware.nixosModules.common-pc-ssd
           ./hardware/wyvern
