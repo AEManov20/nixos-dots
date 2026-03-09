@@ -1,4 +1,4 @@
-{ lib, pkgs, kwin-effects-forceblur, high-tide-ext, ... }:
+{ lib, pkgs, high-tide-ext, ... }:
 {
   programs.zsh = {
     enable = true;
@@ -42,8 +42,6 @@
 
   programs.steam = {
     enable = true;
-    # remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-    # dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
     localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
   };
 
@@ -64,27 +62,29 @@
         "privacy.trackingprotection.fingerprinting.enabled" = true;
         "privacy.trackingprotection.socialtracking.enabled" = true;
       };
-      ExtensionSettings = {
+      ExtensionSettings = let
+        moz = addon_id: "https://addons.mozilla.org/firefox/downloads/latest/${addon_id}/latest.xpi";
+      in {
         "tridactyl.vim@cmcaine.co.uk" = {
-          install_url = "https://addons.mozilla.org/firefox/downloads/file/4549492/tridactyl_vim-1.24.4.xpi";
+          install_url = moz "tridactyl.vim@cmcaine.co.uk";
           installation_mode = "force_installed";
           updates_disabled = true;
           private_browsing = true;
         };
         "{73a6fe31-595d-460b-a920-fcc0f8843232}" = {
-          install_url = "https://addons.mozilla.org/firefox/downloads/file/4628164/noscript-13.5.xpi";
+          install_url = moz "{73a6fe31-595d-460b-a920-fcc0f8843232}"; # noscript
           installation_mode = "force_installed";
           updates_disabled = true;
           private_browsing = true;
         };
         "addon@darkreader.org" = {
-          install_url = "https://addons.mozilla.org/firefox/downloads/file/4625542/darkreader-4.9.116.xpi";
+          install_url = moz "addon@darkreader.org";
           installation_mode = "force_installed";
           updates_disabled = true;
           private_browsing = false;
         };
         "{446900e4-71c2-419f-a6a7-df9c091e268b}" = {
-          install_url = "https://addons.mozilla.org/firefox/downloads/file/4624303/bitwarden_password_manager-2025.11.1.xpi";
+          install_url = moz "{446900e4-71c2-419f-a6a7-df9c091e268b}"; # bitwarden
           installation_mode = "force_installed";
           updates_disabled = true;
           private_browsing = true;
@@ -127,16 +127,31 @@
 
   environment.sessionVariables = { NIXOS_OZONE_WL = "1"; };
   environment.systemPackages = with pkgs; [
-    wl-clipboard
-    wayland-utils
     vlc
     mpv
     strawberry
     high-tide-ext
-    rclone
-    gitFull
     libreoffice-qt-fresh
     kitty
+    mangohud
+    vesktop
+    signal-desktop
+    bottles
+    solaar
+    qalculate-qt
+    chromium
+    tor-browser
+
+    pkgsRocm.blender
+    lact
+
+    swayimg
+    kdePackages.kleopatra
+
+    wl-clipboard
+    wayland-utils
+    rclone
+    gitFull
     rar
     unrar
     zip
@@ -144,40 +159,19 @@
     htop
     nethogs
     nvtopPackages.amd
-    fastfetch
     ncdu
-    mangohud
-    discord
-    element-desktop
-    bottles
-    solaar
     borgbackup
-    chromium
-    qalculate-gtk
     helix
 
     dive
-    podman-tui
-    podman-compose
+    android-tools
     
     nil
     nixfmt
     nixd
 
-    swayimg
-    kdePackages.kleopatra
-
-    libcdio
-    android-tools
-
-    lact
-
-    pkgsRocm.blender
-
     opensc
     libp11
-
-    tor-browser
   ];
 
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
