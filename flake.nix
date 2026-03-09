@@ -38,7 +38,6 @@
         };
 
         modules = [
-          impermanence.nixosModules.impermanence
           nixos-hardware.nixosModules.common-cpu-intel
           nixos-hardware.nixosModules.common-pc-laptop-ssd
           nixos-hardware.nixosModules.common-pc-laptop
@@ -60,6 +59,7 @@
         };
 
         modules = [
+          impermanence.nixosModules.impermanence
           nixos-hardware.nixosModules.gigabyte-b550
           nixos-hardware.nixosModules.common-gpu-amd
           nixos-hardware.nixosModules.common-cpu-amd
