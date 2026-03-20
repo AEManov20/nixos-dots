@@ -8,6 +8,7 @@
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
+  boot.kernelParams = [ "i915.enable_guc=3" "i915.force_probe=7d55" ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
@@ -54,19 +55,24 @@
   # networking.interfaces.wlp0s20f3.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.intel.npu.enable = true;
+  hardware.enableRedistributableFirmware = true;
+  # hardware.cpu.intel.npu.enable = true;
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+  services.xserver.videoDrivers = [ "modesetting" ];
 
   hardware.bluetooth.enable = true;
   hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [
-      # ...
-      # your Open GL, Vulkan and VAAPI drivers
-      vpl-gpu-rt          # for newer GPUs on NixOS >24.05 or unstable
-      # onevpl-intel-gpu  # for newer GPUs on NixOS <= 24.05
-      # intel-media-sdk   # for older GPUs
+      intel-media-driver     # VA-API (iHD) userspace
+      vpl-gpu-rt             # oneVPL (QSV) runtime
+      intel-compute-runtime  # OpenCL (NEO) + Level Zero for Arc/Xe
     ];
+  };
+
+  environment.sessionVariables = {
+    LIBVA_DRIVER_NAME = "iHD";  # Prefer the modern iHD backend
   };
 
   hardware.trackpoint.enable = true;
