@@ -27,7 +27,7 @@
     in ["${automount_opts},nodev,noatime"];
   };
 
-  boot.kernelPackages = pkgs.linuxPackages;
+  boot.kernelPackages = pkgs.linuxPackages_zen;
 
   system.stateVersion = "24.11";
 }
