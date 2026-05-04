@@ -128,7 +128,9 @@
   environment.sessionVariables = { NIXOS_OZONE_WL = "1"; };
   environment.systemPackages = with pkgs; [
     vlc
-    mpv
+    (mpv.override {
+      youtubeSupport = false;
+    })
     strawberry
     high-tide-ext
     libreoffice-qt-fresh
@@ -136,7 +138,6 @@
     mangohud
     vesktop
     signal-desktop
-    bottles
     solaar
     qalculate-qt
     chromium
