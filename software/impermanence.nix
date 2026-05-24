@@ -6,11 +6,12 @@
 
     directories = [
       "/var/log"
-      "/var/lib/nixos"
-      "/var/lib/systemd/coredump"
       "/etc/NetworkManager/system-connections"
+      "/var/lib/nixos"
       "/var/lib/tailscale"
       "/var/lib/flatpak"
+      "/var/lib/systemd"
+      "/var/lib/libvirt"
     ];
 
     files = [
