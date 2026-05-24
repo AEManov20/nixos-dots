@@ -163,6 +163,7 @@
     ncdu
     borgbackup
     helix
+    tmux
 
     dive
     android-tools
