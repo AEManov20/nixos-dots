@@ -5,7 +5,7 @@
     ../../impermanence.nix
   ];
 
-  networking.interfaces.enp7s0.wakeOnLan.enable = true;
+  networking.interfaces.enp6s0.wakeOnLan.enable = true;
 
   systemd.packages = with pkgs; [ lact ];
   systemd.services.lactd.wantedBy = ["multi-user.target"];
@@ -21,7 +21,7 @@
   };
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_zen;
+    kernelPackages = pkgs.linuxPackages_latest;
     extraModulePackages = with config.boot.kernelPackages; [ rtw88 ];
   };
 
