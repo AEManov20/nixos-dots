@@ -98,33 +98,6 @@
     enableSSHSupport = true;
   };
 
-  # programs.firejail = let
-  #   ptPkg = pkgs.ciscoPacketTracer9;
-  # in
-  # {
-  #   enable = true;
-  #   wrappedBinaries = {
-  #     packettracer9 = {
-  #       executable = lib.getExe ptPkg;
-
-  #       # Will still want a .desktop entry as the package is not directly added
-  #       # desktop = "${ptPkg}/share/applications/cisco-pt9.desktop.desktop";
-
-  #       extraArgs = [
-  #         # This should make it run in isolated netns, preventing internet access
-  #         "--net=none"
-
-  #         # firejail is only needed for network isolation so no futher profile is needed
-  #         "--noprofile"
-
-  #         # Packet tracer doesn't play nice with dark QT themes so this
-  #         # should unset the theme. Uncomment if you have this issue.
-  #         ''--env=QT_STYLE_OVERRIDE=""''
-  #       ];
-  #     };
-  #   };
-  # };
-
   environment.sessionVariables = { NIXOS_OZONE_WL = "1"; };
   environment.systemPackages = with pkgs; [
     vlc
@@ -163,6 +136,7 @@
     ncdu
     borgbackup
     helix
+    zed-editor
     tmux
 
     dive

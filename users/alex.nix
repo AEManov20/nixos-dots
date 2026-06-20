@@ -6,7 +6,7 @@
     hyprcursor.enable = true;
     enable = true;
 
-    package = pkgs.bibata-cursors;
+    package = pkgs.posy-cursors;
     name = "Bibata-Original-Classic";
     size = 16;
   };

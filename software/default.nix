@@ -29,7 +29,7 @@
     "blender"
     "pcsc-safenet"
     "discord"
-    "cisco-packet-tracer"
+    "posy-cursors"
   ];
 
   time.timeZone = "Europe/Vienna";

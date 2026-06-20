@@ -63,7 +63,7 @@
 
   programs.gamescope = {
     enable = true;
-    capSysNice = true;
+    # capSysNice = true;
   };
 
   programs.steam.gamescopeSession.enable = true;
