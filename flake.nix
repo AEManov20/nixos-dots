@@ -38,9 +38,11 @@
         };
 
         modules = [
-          nixos-hardware.nixosModules.common-cpu-intel
-          nixos-hardware.nixosModules.common-pc-laptop-ssd
-          nixos-hardware.nixosModules.common-pc-laptop
+          # nixos-hardware.nixosModules.common-cpu-intel
+          # nixos-hardware.nixosModules.common-cpu-intel-meteor-lake
+          # nixos-hardware.nixosModules.common-pc-laptop-ssd
+          # nixos-hardware.nixosModules.common-pc-laptop
+          nixos-hardware.nixosModules.lenovo-thinkpad-e14-intel-gen6
           ./hardware/falkor
           ./software/machine-specific/falkor
           home-manager.nixosModules.home-manager homeManagerOpts
