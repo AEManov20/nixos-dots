@@ -98,7 +98,11 @@
     enableSSHSupport = true;
   };
 
-  environment.sessionVariables = { NIXOS_OZONE_WL = "1"; };
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+    KWIN_DRM_DISABLE_TRIPLE_BUFFERING = "1";
+  };
+
   environment.systemPackages = with pkgs; [
     vlc
     (mpv.override {
@@ -140,6 +144,8 @@
     tmux
 
     dive
+    podman-tui
+    docker-compose
     android-tools
     
     nil
